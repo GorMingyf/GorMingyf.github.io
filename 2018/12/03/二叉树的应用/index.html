@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数据结构,树,二叉树,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="@TOC 二叉树——应用二叉排序树（BST） 二叉排序树的定义 或者是一棵空树，或者有如下性质的树： （1）若左子树非空，则左子树上所有节点关键字值均小于根节点的关键字值；（2）若右子树非空，则右子树上所有节点关键字值均大于根节点的关键字值；（3）左右子树也分别是一颗二叉排序树。因此，对二叉排序树的中序遍历得到的就是一个递增的序列。  二叉排序树的查找 从根节点开始，沿一个分支逐层向下进行比较的过">
+<meta name="keywords" content="数据结构,树,二叉树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的概念与操作">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/二叉树的应用/index.html">
+<meta property="og:site_name" content="GorMing Blog">
+<meta property="og:description" content="@TOC 二叉树——应用二叉排序树（BST） 二叉排序树的定义 或者是一棵空树，或者有如下性质的树： （1）若左子树非空，则左子树上所有节点关键字值均小于根节点的关键字值；（2）若右子树非空，则右子树上所有节点关键字值均大于根节点的关键字值；（3）左右子树也分别是一颗二叉排序树。因此，对二叉排序树的中序遍历得到的就是一个递增的序列。  二叉排序树的查找 从根节点开始，沿一个分支逐层向下进行比较的过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-05T16:10:11.539Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二叉树的概念与操作">
+<meta name="twitter:description" content="@TOC 二叉树——应用二叉排序树（BST） 二叉排序树的定义 或者是一棵空树，或者有如下性质的树： （1）若左子树非空，则左子树上所有节点关键字值均小于根节点的关键字值；（2）若右子树非空，则右子树上所有节点关键字值均大于根节点的关键字值；（3）左右子树也分别是一颗二叉排序树。因此，对二叉排序树的中序遍历得到的就是一个递增的序列。  二叉排序树的查找 从根节点开始，沿一个分支逐层向下进行比较的过">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/二叉树的应用/">
+
+
+
+
+
+  <title>二叉树的概念与操作 | GorMing Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GorMing Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/二叉树的应用/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GorMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/gor.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GorMing Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">二叉树的概念与操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T17:33:07+08:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/二叉树/" itemprop="url" rel="index">
+                    <span itemprop="name">二叉树</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/03/二叉树的应用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/03/二叉树的应用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@<a href="目录">TOC</a></p>
+<h1 id="二叉树——应用"><a href="#二叉树——应用" class="headerlink" title="二叉树——应用"></a>二叉树——应用</h1><h2 id="二叉排序树（BST）"><a href="#二叉排序树（BST）" class="headerlink" title="二叉排序树（BST）"></a>二叉排序树（BST）</h2><ol>
+<li><p><strong>二叉排序树的定义</strong></p>
+<p>或者是一棵空树，或者有如下性质的树：</p>
+<p>（1）若左子树非空，则左子树上所有节点关键字值均小于根节点的关键字值；<br>（2）若右子树非空，则右子树上所有节点关键字值均大于根节点的关键字值；<br>（3）左右子树也分别是一颗二叉排序树。<br>因此，对二叉排序树的中序遍历得到的就是一个递增的序列。</p>
+</li>
+<li><p><strong>二叉排序树的查找</strong></p>
+<p>从根节点开始，沿一个分支逐层向下进行比较的过程。若二叉树非空，将给定的关键字与根节点的值比较，如果相同则查找成功，如果不相同，如果给定的关键字的值大于根节点的值那么转向右子树寻找，如果小于则向左子树寻找。</p>
+<p>算法表示如下所示：</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">BSTNode* <span class="title">BST_Search</span><span class="params">(BiTree T, ElemType key, BSTNode *p)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  查找函数返回指向关键字值为key的节点指针，如果不存在，</span></span><br><span class="line">    <span class="comment">//  返回NULL</span></span><br><span class="line">    <span class="comment">//  p指向被查找节点的双亲节点</span></span><br><span class="line">    p = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">while</span>(T &amp;&amp; key != T-&gt;data) &#123;</span><br><span class="line">        p = T;</span><br><span class="line">        <span class="keyword">if</span> (key &lt; T -&gt; data)</span><br><span class="line">            T = T -&gt; lchild;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            T = T -&gt; rchild;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">BSTNode* <span class="title">BST_RecurSearch</span><span class="params">(BiTree T, ElemType key, BSTNode *p)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  算法的递归实现形式</span></span><br><span class="line">    <span class="keyword">if</span> (T) &#123;</span><br><span class="line">        <span class="keyword">if</span> (key == T -&gt; data)</span><br><span class="line">            <span class="keyword">return</span> T;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (key &lt; T -&gt; data)</span><br><span class="line">            BST_RecurSearch(T -&gt; lchild, key, T)</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            BST_RecurSearch(T -&gt; rchild, key, T)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>二叉排序树的插入</strong><br>在查找的过程中，如果没有查找到关键字值的二叉树时，将节点插入到二叉树中，如果二叉树原本为空则要插入的节点为根节点，如果要插入的值比根节点的值大则插入到右子树中，如果比根节点的值小，则插入到左子树中。</p>
+<p> 算法如下所示：</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BST_Insert</span><span class="params">(BiTree &amp;T, ElemType key)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  如果二叉树中存在值为key的节点，那么返回0；</span></span><br><span class="line">    <span class="comment">//  如果二叉树中不存在值为key的节点，那么插入节点并返回1；</span></span><br><span class="line">    <span class="keyword">if</span> (T == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        T = (BSTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BSTNode));</span><br><span class="line">        T -&gt; data = key;</span><br><span class="line">        T -&gt; lchild = T -&gt; rchild = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (T -&gt; data == key) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (key &lt; T -&gt; data) &#123;</span><br><span class="line">        BST_Insert(T -&gt; lchild, key);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        BST_Insert(T -&gt; rchild, key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>二叉排序树的构造</strong></p>
+<p>依次输入数据元素，并且将它们插入到排序树中适当的位置。具体过程是每读入一个元素就建立一个新节点，若二叉树为空则这个节点为根节点，如果二叉树不为空的话，则将这个节点插入二叉树中。</p>
+<p>算法如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BST_Creat</span><span class="params">(BiTree &amp;T, ElemType str[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    T == <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; n) &#123;</span><br><span class="line">        BST_Insert(T, str[i]);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>二叉排序树的删除</strong></p>
+<p>删除二叉树节点的过程按照三种情况来处理：</p>
+<p>（1）如果被删除节点是叶子结点，则直接删除，不会破坏二叉排序树的性质；</p>
+<p>（2）如果节点只有一颗左子树或者右子树，则让节点的子树称为节点父节点的子树，代替被删除节点的位置；</p>
+<p>（3）如果被删除节点有左右子树的话，则在右子树中找中序第一个子女填补。</p>
+<p>算法表示如下所示：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BST_Delete</span><span class="params">(BiTree T, ElemType key)</span> </span>&#123;</span><br><span class="line">    BiTree pre = <span class="literal">NULL</span>;</span><br><span class="line">    BiTree p =  BST_Search(T, key, pre); <span class="comment">//  查找节点</span></span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (p -&gt; lchild == <span class="literal">NULL</span> &amp;&amp; p -&gt; rchild == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">//  如果是叶子节点则直接删除；</span></span><br><span class="line">        <span class="keyword">if</span> (pre -&gt; lchild == p)</span><br><span class="line">            pre -&gt; lchild = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (pre -&gt; rchild == p)</span><br><span class="line">            pre -&gt; rchild = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="built_in">free</span>(p)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p -&gt; lchild == <span class="literal">NULL</span> &amp;&amp; p -&gt; rchild != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">// 左子树为空</span></span><br><span class="line">        <span class="keyword">if</span> (pre -&gt; lchild == p)</span><br><span class="line">            pre -&gt; lchild = p -&gt; rchild;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (pre -&gt; rchild == p)</span><br><span class="line">            pre -&gt; lchild == p -&gt; rchild;</span><br><span class="line">        <span class="built_in">free</span>(p)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p -&gt; lchild != <span class="literal">NULL</span> &amp;&amp; p -&gt; rchild == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="comment">//  右子树为空</span></span><br><span class="line">        <span class="keyword">if</span> (pre -&gt; lchild == p)</span><br><span class="line">            pre -&gt; lchild == p -&gt; lchild;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (pre -&gt; rchild == p)</span><br><span class="line">            pre -&gt; rchild = p -&gt; lchild;</span><br><span class="line">        <span class="built_in">free</span>(p);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//  左右子树都不为空</span></span><br><span class="line">        <span class="comment">//  寻找右子树在中序遍历的情况下第一个输出的节点；</span></span><br><span class="line">        BiTree temp = p -&gt; rchild;</span><br><span class="line">        Bitree pre2 = p;</span><br><span class="line">        <span class="keyword">while</span> (temp -&gt; lchild != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            temp = temp -&gt; lchild;</span><br><span class="line">            pre2 = p;</span><br><span class="line">        &#125;</span><br><span class="line">        p -&gt; data = temp -&gt; data;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  删除temp节点；</span></span><br><span class="line">        <span class="keyword">if</span> (pre2 -&gt; lchild == temp)</span><br><span class="line">            pre2 -&gt; lchild == temp -&gt; rchild;</span><br><span class="line">        <span class="keyword">if</span> (pre2 -&gt; rchild == temp)</span><br><span class="line">            pre2 -&gt; rchild == temp -&gt; rchild;</span><br><span class="line">        <span class="built_in">free</span>(temp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="二叉平衡树（AVL）"><a href="#二叉平衡树（AVL）" class="headerlink" title="二叉平衡树（AVL）"></a>二叉平衡树（AVL）</h2><ol>
+<li><p><strong>平衡二叉树的定义</strong></p>
+<p>在插入和删除节点的时候，保证任意节点的左右子树的高度差不超过1，这样的二叉树称为平衡二叉树，简称平衡树。定义左子树和右子树的高度差为平衡因子，则平衡因子的值只可能为-1， 0， 1三种。</p>
+<p>所以平衡二叉树可定义为它或者是一颗空树，或者它的左右子树都是平衡二叉树，并且左右子树的高度差不超过1.</p>
+</li>
+<li><p><strong>平衡二叉树的插入</strong></p>
+<p>按照二叉排序树插入节点的规则向二叉树中插入一个节点，插入之后，如果二叉树不再是平衡二叉树那么调整二叉树，使得这个二叉树成为新的平衡二叉树。</p>
+<p>失去平衡之后调整可归纳为一下四种情况：</p>
+</li>
+</ol>
+<p>（1）LL平衡旋转：在A节点的左孩子（L）的左子树（L）上插入了新节点，导致A的平衡因子从1变成了2，导致以A为根的子树失去平衡，需要一次向右旋转的操作。使得A的左孩子接替A，而A的左孩子的右子节点称为旋转后的A的左孩子节点。</p>
+<p>（2）RR平衡旋转：由于在A节点的右孩子（R）的右子树（R）上插入了新的节点，导致A的平衡因子从-1变成了-2，失去平衡。需要一次向左旋转的操作。</p>
+<p>（3）LR平衡旋转：在A节点的左孩子（L）的右子树（R）上插入了新节点，导致A的平衡因子从1变成了2，导致以A为根的子树失去平衡，需要两次旋转，先向左旋转，再向右旋转。</p>
+<p>（4）RL平衡旋转：在A节点的右孩子（R）的左子树（L）上插入了新节点，导致A的平衡因子从-1变成了-2，导致以A为根的子树失去平衡，需要两次旋转，先右旋转，再左旋转。</p>
+<ol start="3">
+<li><p><strong>平衡二叉树的查找</strong></p>
+<p>查找过程与二叉排序树相同。</p>
+</li>
+</ol>
+<p><strong>关于平衡二叉树的具体实现C++程序，可以参考<a href="https://www.cnblogs.com/zhangbaochong/p/5164994.html" target="_blank" rel="noopener">平衡二叉树详解</a>（本地测试过了，程序可以运行）</strong></p>
+<h2 id="哈夫曼树与哈弗曼编码"><a href="#哈夫曼树与哈弗曼编码" class="headerlink" title="哈夫曼树与哈弗曼编码"></a>哈夫曼树与哈弗曼编码</h2><ol>
+<li><p><strong>哈夫曼树的定义</strong></p>
+<p>在含有N个带权叶子结点的二叉树中，其中带权路径长度（WPL）最小的二叉树称为哈夫曼树，也成为最优二叉树。</p>
+</li>
+<li><p><strong>哈夫曼树的构造</strong></p>
+<p>  给定N个权值分别为w1, w2, …, Wn的节点。构造哈夫曼树的算法描述如下：</p>
+<p> （1）将这N个结点分别作为N棵树仅含一个结点的二叉树，构成森林F.<br> （2）构造一个新节点，并从F中选取两棵根结点权值最小的树作为新节点的左、右子树，并且将新节点的权值置为左、右子树上根结点的权<br> 值之和。<br> （3）从F中删除刚才选出的两棵树，同时将新得到的树加入F中。<br> （4）重复步骤2和3，直至F中只剩下一棵树为止。</p>
+</li>
+<li><p><strong>哈弗曼编码</strong></p>
+<p> 哈夫曼编码是一种被广泛应用而且非常有效的数据压缩编码，它是可变长度编码。可变长编码即可以对待处理字符串中不同字符使用不等长的二进制位表示，可变长编码比固定长度编码好很多，可以对频率高的字符赋予短编码，而对频率较低的字符则赋予较长一些的编码，从而可以使平均编码长度减短，起到压缩数据的效果。<br> 哈夫曼编码是前缀编码。如果没有一个编码是另一个编码的前缀，则称这样的编码为前缀编码。对前缀编码的解码也是相对简单的，因为没有一个码是另一个编码的前缀，所以可以识别出第一个编码，将它翻译为原码，再对余下的编码文件重复同样操作。</p>
+<p> 哈夫曼编码首先要构造一棵哈夫曼树，首先，将每个出现的字符当做一个独立的结点，其权值作为它出现的频度（或次数），然后构造哈夫曼树。显然所有字符节点均出现在叶子结点中。我们可以将字符的编码解释为从根至该字符路径上标记的序列，其中标记为0表示”转向左孩子”，标记为1表示为”转向右孩子”。</p>
+</li>
+</ol>
+<h2 id="部分题目算法编写"><a href="#部分题目算法编写" class="headerlink" title="部分题目算法编写"></a>部分题目算法编写</h2><ol>
+<li><p>判断一棵二叉树是否是二叉排序树。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  方案1：直接在二叉树中比较</span></span><br><span class="line"> <span class="function"><span class="keyword">bool</span> <span class="title">isBST_Tree</span><span class="params">(BiTree T)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span> (T) &#123;</span><br><span class="line">         <span class="comment">//  左子值大于根节点值</span></span><br><span class="line">         <span class="keyword">if</span> (T -&gt; lchild &amp;&amp; T -&gt; lchild -&gt; data &gt; T -&gt; data)</span><br><span class="line">             <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">         <span class="comment">//  右子值小于根节点值</span></span><br><span class="line">         <span class="keyword">if</span> (T -&gt; rchild &amp;&amp; T -&gt; rchild -&gt; data &lt; T -&gt; data)</span><br><span class="line">             <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">         <span class="comment">//  不存在左右节点</span></span><br><span class="line">         <span class="keyword">if</span> (T -&gt; lchild == <span class="literal">NULL</span> &amp;&amp; T -&gt; rchild == <span class="literal">NULL</span>)</span><br><span class="line">             <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">         <span class="keyword">else</span></span><br><span class="line">             <span class="keyword">return</span> isBST_Tree(T -&gt; lchild) &amp;&amp; isBST_Tree(T -&gt; rchild);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//  方案2：中序遍历二叉树，得到的结果始终满足前一个元素的数据小于后一个元素的数据。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用二叉树的遍历思想，判断一棵二叉树是否为平衡二叉树。</p>
+</li>
+</ol>
+   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Judge_AVL</span><span class="params">(BiTree T, <span class="keyword">int</span> &amp;balance, <span class="keyword">int</span> &amp;h)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  左右子树的平衡标记和高度</span></span><br><span class="line">        <span class="keyword">int</span> bl = <span class="number">0</span>, br = <span class="number">0</span>, hl = <span class="number">0</span>, hr = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (T == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            h = <span class="number">0</span>;</span><br><span class="line">            balance = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (T -&gt; lchild == <span class="literal">NULL</span> &amp;&amp; T -&gt; rchild == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            h = <span class="number">1</span>;</span><br><span class="line">            balance = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Judge_AVL(T -&gt; lchild, bl, hl);</span><br><span class="line">            Judge_AVL(T -&gt; rchild, br, hr);</span><br><span class="line">            <span class="keyword">int</span> h = (hl&gt;hr?hl:hr) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">abs</span>(h) &lt; <span class="number">2</span>)</span><br><span class="line">                balance = bl &amp;&amp; br;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                balance = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   ``` </span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 设计一个算法，从大到小输出二叉排序树中所有其值不小于k的关键字。</span><br><span class="line">   ```C++</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printk</span><span class="params">(BiTree T, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (T) &#123;</span><br><span class="line">            <span class="keyword">if</span> (T -&gt; data &gt; k) &#123;</span><br><span class="line">                printk(T -&gt; rchild, k);</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; T -&gt; data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">                printk(T -&gt; lchild, k);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (T -&gt; data == k)&#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; k &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  以下的是一个更为简洁的函数；</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Printk</span><span class="params">(BiTree T, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (T == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (T -&gt; rchild != <span class="literal">NULL</span>)</span><br><span class="line">            Printk(T -&gt; rchild, k);</span><br><span class="line">        <span class="keyword">if</span> (T -&gt; data &gt;= k)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; T-&gt; data &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">        <span class="keyword">if</span> (T -&gt; lchild != <span class="literal">NULL</span>)</span><br><span class="line">            Printk(t -&gt; lchild, k);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+            <a href="/tags/树/" rel="tag"># 树</a>
+          
+            <a href="/tags/二叉树/" rel="tag"># 二叉树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/03/树与森林/" rel="prev" title="树与森林">
+                树与森林 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/gor.jpg" alt="GorMing">
+            
+              <p class="site-author-name" itemprop="name">GorMing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/GorMingyf" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:GorMing@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树——应用"><span class="nav-number">1.</span> <span class="nav-text">二叉树——应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉排序树（BST）"><span class="nav-number">1.1.</span> <span class="nav-text">二叉排序树（BST）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉平衡树（AVL）"><span class="nav-number">1.2.</span> <span class="nav-text">二叉平衡树（AVL）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈夫曼树与哈弗曼编码"><span class="nav-number">1.3.</span> <span class="nav-text">哈夫曼树与哈弗曼编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分题目算法编写"><span class="nav-number">1.4.</span> <span class="nav-text">部分题目算法编写</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GorMing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'dKgIBj5WRXYC3ieCXKno7O4X-gzGzoHsz',
+        appKey: 'KBIh5RD73pOu1lfJRIzjSGC7',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
