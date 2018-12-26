@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="数据结构,树,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="@TOC 树和森林树的基本概念与性质 基本概念  树的定义是递归的，树是一种逻辑结构，同时也是一种分层结构。  性质 （1）树中的节点数等于所有节点的度数加1； （2）度为m的树中第i层上至多有m^(i-1)个节点； （3）高度为h的m叉树至多有(m^h - 1)/(m-1)个节点； （4）具有n个节点的m叉树的最小高度为[logm(n(m-1)+1)]  树的存储结构 （1）双亲表示法  采用一">
-<meta name="keywords" content="数据结构,树">
+<meta name="description" content="@TOC 排序——内部排序之交换排序内部排序排序的一篇优秀博客  插入排序 折半插入排序 希尔排序（不稳定） 冒泡排序 123456789101112131415161718void BubbleSort(ElemType A[], int n) &amp;#123;    int temp = 0;    //  标记数组是不是有序的；    bool flag = false;    for (int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树与森林">
-<meta property="og:url" content="http://yoursite.com/2018/12/03/树与森林/index.html">
+<meta property="og:title" content="GorMing Blog">
+<meta property="og:url" content="http://yoursite.com/2018/12/26/排序——内部排序之交换排序/index.html">
 <meta property="og:site_name" content="GorMing Blog">
-<meta property="og:description" content="@TOC 树和森林树的基本概念与性质 基本概念  树的定义是递归的，树是一种逻辑结构，同时也是一种分层结构。  性质 （1）树中的节点数等于所有节点的度数加1； （2）度为m的树中第i层上至多有m^(i-1)个节点； （3）高度为h的m叉树至多有(m^h - 1)/(m-1)个节点； （4）具有n个节点的m叉树的最小高度为[logm(n(m-1)+1)]  树的存储结构 （1）双亲表示法  采用一">
+<meta property="og:description" content="@TOC 排序——内部排序之交换排序内部排序排序的一篇优秀博客  插入排序 折半插入排序 希尔排序（不稳定） 冒泡排序 123456789101112131415161718void BubbleSort(ElemType A[], int n) &amp;#123;    int temp = 0;    //  标记数组是不是有序的；    bool flag = false;    for (int">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T16:18:41.694Z">
+<meta property="og:updated_time" content="2018-12-26T14:35:45.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="树与森林">
-<meta name="twitter:description" content="@TOC 树和森林树的基本概念与性质 基本概念  树的定义是递归的，树是一种逻辑结构，同时也是一种分层结构。  性质 （1）树中的节点数等于所有节点的度数加1； （2）度为m的树中第i层上至多有m^(i-1)个节点； （3）高度为h的m叉树至多有(m^h - 1)/(m-1)个节点； （4）具有n个节点的m叉树的最小高度为[logm(n(m-1)+1)]  树的存储结构 （1）双亲表示法  采用一">
+<meta name="twitter:title" content="GorMing Blog">
+<meta name="twitter:description" content="@TOC 排序——内部排序之交换排序内部排序排序的一篇优秀博客  插入排序 折半插入排序 希尔排序（不稳定） 冒泡排序 123456789101112131415161718void BubbleSort(ElemType A[], int n) &amp;#123;    int temp = 0;    //  标记数组是不是有序的；    bool flag = false;    for (int">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/03/树与森林/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/26/排序——内部排序之交换排序/">
 
 
 
 
 
-  <title>树与森林 | GorMing Blog</title>
+  <title> | GorMing Blog</title>
   
 
 
@@ -295,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/树与森林/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/排序——内部排序之交换排序/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GorMing">
@@ -312,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">树与森林</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -324,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T17:33:07+08:00">
-                2018-12-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T22:35:45+08:00">
+                2018-12-26
               </time>
             
 
@@ -335,39 +334,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/树/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -376,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/03/树与森林/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/03/树与森林/" itemprop="commentCount"></span>
+                <a href="/2018/12/26/排序——内部排序之交换排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/26/排序——内部排序之交换排序/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -411,23 +377,36 @@
 
       
         <p>@<a href="这里写自定义目录标题">TOC</a></p>
-<h1 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a>树和森林</h1><h2 id="树的基本概念与性质"><a href="#树的基本概念与性质" class="headerlink" title="树的基本概念与性质"></a><strong>树的基本概念与性质</strong></h2><ol>
-<li><p><strong>基本概念</strong> </p>
-<p>树的定义是递归的，树是一种逻辑结构，同时也是一种分层结构。</p>
+<h1 id="排序——内部排序之交换排序"><a href="#排序——内部排序之交换排序" class="headerlink" title="排序——内部排序之交换排序"></a>排序——内部排序之交换排序</h1><h2 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h2><p>排序的一篇<a href="https://www.cnblogs.com/onepixel/articles/7674659.html" target="_blank" rel="noopener">优秀博客</a></p>
+<ol>
+<li>插入排序</li>
+<li>折半插入排序</li>
+<li>希尔排序（不稳定）</li>
+<li><p>冒泡排序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(ElemType A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//  标记数组是不是有序的；</span></span><br><span class="line">    <span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = n - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[j - <span class="number">1</span>].key &gt; A[j].key) &#123;</span><br><span class="line">                temp = A[j - <span class="number">1</span>].key;</span><br><span class="line">                A[j - <span class="number">1</span>].key = A[j].key;</span><br><span class="line">                A[j].key = temp;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="literal">false</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>性质</strong></p>
-<p>（1）树中的节点数等于所有节点的度数加1；</p>
-<p>（2）度为m的树中第i层上至多有m^(i-1)个节点；</p>
-<p>（3）高度为h的m叉树至多有(m^h - 1)/(m-1)个节点；</p>
-<p>（4）具有n个节点的m叉树的最小高度为[logm(n(m-1)+1)]</p>
+<li><p>快速排序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(ElemType A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = Partion(A, low, high);</span><br><span class="line">        QuickSort(A, low, mid - <span class="number">1</span>);</span><br><span class="line">        QuickSort(A, mid + <span class="number">1</span>, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Partion</span><span class="params">(ElemType A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    ElemType privot = A[low];  </span><br><span class="line">    <span class="comment">//  将数组的第一个元素设置成枢纽值，对数组进行划分</span></span><br><span class="line">    <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[high] &gt;= privot) --high;</span><br><span class="line">        A[low] = A[high];</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[low] &lt;= privot) ++low;</span><br><span class="line">        A[high] = A[low];</span><br><span class="line">    &#125;</span><br><span class="line">    A[low] = privot;</span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>树的存储结构</strong></p>
-<p>（1）双亲表示法</p>
-<p> 采用一组连续的空间存储每个节点，同时在每个节点中增设一个伪指针，指示这个节点的双亲节点在数组中的位置，利用这种存储结构可以很快的得到每一个节点的双亲节点，但是求节点的孩子节点时需要遍历整个结构。</p>
-<p> （2）孩子表示法</p>
-<p> 每个节点的孩子节点都用一个单链表链接起来形成一个线性结构，那么N个节点就有N个孩子链表。</p>
-<p> （3）孩子兄弟表示法</p>
-<p> 又称为二叉树表示法，即以二叉链表作为树的存储结构，使得每个节点包括三个内容：节点值、指向节点第一个孩子节点的指针和指向节点下一个兄弟节点的指针。</p>
+</ol>
+<h2 id="算法练习"><a href="#算法练习" class="headerlink" title="算法练习"></a>算法练习</h2><ol>
+<li><p>线性表按顺序存储，使用最少的时间和空间将所有奇数移动到偶数的前面</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OddEvenEx</span><span class="params">(ElemType A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> j = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; A[j] % <span class="number">2</span> != <span class="number">1</span>) --j; </span><br><span class="line">        <span class="comment">//  从后向前寻找第一个奇数</span></span><br><span class="line">        <span class="keyword">while</span>(i &lt; j &amp;&amp; A[i] % <span class="number">2</span> != <span class="number">0</span>) ++i;</span><br><span class="line">        <span class="comment">//  从前向后寻找第一个偶数</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">            Swap(A[i], A[j]);</span><br><span class="line">            ++i;</span><br><span class="line">            --j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>试在数组A[1…n]中寻找第k小的数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElemType <span class="title">KthLeast</span><span class="params">(ElemType A[], <span class="keyword">int</span> k, <span class="keyword">int</span> low, <span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    ElemType privot = A[low];</span><br><span class="line">    <span class="keyword">int</span> low_temp = low;</span><br><span class="line">    <span class="keyword">int</span> high_temp = high;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[high] &gt;= privot) --high;</span><br><span class="line">        A[low] = A[high];</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[low] &lt;= privot) ++low;</span><br><span class="line">        A[high] = A[low]; </span><br><span class="line">    &#125;</span><br><span class="line">    A[low] = privot;</span><br><span class="line">    <span class="comment">/*这里使用递归的方式来实现 </span></span><br><span class="line"><span class="comment">    if (low == k) &#123;</span></span><br><span class="line"><span class="comment">        return A[low];</span></span><br><span class="line"><span class="comment">    &#125; else if (low &lt; k) &#123;</span></span><br><span class="line"><span class="comment">        low = low + 1;</span></span><br><span class="line"><span class="comment">        high = n - 1;</span></span><br><span class="line"><span class="comment">    &#125; else &#123;</span></span><br><span class="line"><span class="comment">        high = low - 1;</span></span><br><span class="line"><span class="comment">        low = 0;</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line">    <span class="comment">//这里的k如果数组下表是从0开始的话，最开始的时候k需要减1</span></span><br><span class="line">    <span class="keyword">if</span> (low == k) &#123;</span><br><span class="line">        <span class="keyword">return</span> A[low];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (low &lt; k) &#123;</span><br><span class="line">        <span class="comment">// 在后一部分继续寻找</span></span><br><span class="line">        <span class="keyword">return</span> KthLeast(A, k, low + <span class="number">1</span>, high_temp);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//  在前一部分继续寻找</span></span><br><span class="line">        <span class="keyword">return</span> KthLeast(A, k, low_temp, low - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2016年计算机联考真题</p>
+<p>已知由n（n&gt;=2）个正整数构成的集合A ，将其划分成两个不相交的子集A1和A2，元素个数分别为n1和n2，A1和A2中元素之和分别为S1和S2。设计一个尽可能高效的划分算法，满足|n1-n2|最小且|S1-S2|最大。要求：<br> 1）给出算法的基本设计思想。<br> 2）根据设计思想，采用C或C++语言描述算法，关键之处给出注释。<br> 3）说明你所设计算法的平均时间复杂度和空间复杂度。</p>
+<p> <strong>算法解析：这道题目是求第k大的数的一个变种.</strong></p>
+<p> <strong>|n1-n2|最小且|S1-S2|最大，在数组元素为奇数个的时候，|n1-n2|最小为1，那么把前n/2个最小的数放在一个数组，后面n/2+1个比较大的数放在另一个数组，这时得到的结果满足条件；数组元素为偶数个的时候，|n1-n2|最小为0，所以，第一个数组里面的数是比较小的前n/2个数，第二个数组的是后n/2个比较大的数</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ArrPartion</span><span class="params">(ElemType A[], <span class="keyword">int</span> low, <span class="keyword">int</span> high, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    ElemType privot = A[low];</span><br><span class="line">    <span class="keyword">int</span> low_temp = low;</span><br><span class="line">    <span class="keyword">int</span> high_temp = high;</span><br><span class="line">    <span class="keyword">while</span>(low &lt; high) &#123;</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[high] &gt; privot) --high;</span><br><span class="line">        A[low] = A[high];</span><br><span class="line">        <span class="keyword">while</span>(low &lt; high &amp;&amp; A[low] &lt; privot) ++low;</span><br><span class="line">        A[high] = A[low];</span><br><span class="line">    &#125;</span><br><span class="line">    A[low] = privot;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (low == k) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (low &lt; k) &#123;</span><br><span class="line">        ArrPartion(A, low_temp, low - <span class="number">1</span>, k);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ArrPartion(A, low + <span class="number">1</span>, high_temp, k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>荷兰国旗难题</p>
+<p>现在有若干个红、白、蓝三种颜色的球随机排列成一条直线。现在我们的任务是把这些球按照红、白、蓝排序。</p>
+<p> <strong>算法思想：</strong>对线性表从前往后进行扫描，将红色的条块放到前面，蓝色对的条块放到后面，白色的条块自然也就在中间的位置，故而需要三个指针，begin和end分别指向数组的头部和尾部，current指针从前往后扫描，如果遇到红色就和头部进行交换，如果遇到蓝色则和尾部交换。</p>
+<p> 算法实现如下所示：</p>
+ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">enum</span>&#123;RED, WHITE, BLUE&#125; color;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Holland_Partion</span><span class="params">(color arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> end = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> current = begin;</span><br><span class="line">    color temp;</span><br><span class="line">    <span class="keyword">while</span>(current &lt;= end) &#123;</span><br><span class="line">        <span class="keyword">switch</span>(arr[current])&#123;</span><br><span class="line">            <span class="keyword">case</span> RED:</span><br><span class="line">                temp = arr[begin];</span><br><span class="line">                arr[begin] = arr[current];</span><br><span class="line">                arr[current] = temp;</span><br><span class="line">                begin++;</span><br><span class="line">                current++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> WHITE:</span><br><span class="line">                current++;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> BLUE:</span><br><span class="line">                temp = arr[end];</span><br><span class="line">                arr[end] = arr[current];</span><br><span class="line">                arr[current] = temp;</span><br><span class="line">                end--;</span><br><span class="line">                <span class="comment">//  current没有++，因为担心交换后current指向的仍为BLUE</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    color arr[<span class="number">12</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i+=<span class="number">3</span>) &#123;</span><br><span class="line">        arr[i] = WHITE;</span><br><span class="line">        arr[i + <span class="number">1</span>] = BLUE;</span><br><span class="line">        arr[i + <span class="number">2</span>] = RED;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    Holland_Partion(arr, <span class="number">12</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">12</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 
@@ -447,14 +426,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
-          
-            <a href="/tags/树/" rel="tag"># 树</a>
-          
-        </div>
-      
 
       
       
@@ -464,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/03/二叉树的概念与操作/" rel="next" title="二叉树的概念与操作">
-                <i class="fa fa-chevron-left"></i> 二叉树的概念与操作
+              <a href="/2018/12/26/排序——内部排序值交换排序/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -473,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/20/图——应用/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -629,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#树和森林"><span class="nav-number">1.</span> <span class="nav-text">树和森林</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#树的基本概念与性质"><span class="nav-number">1.1.</span> <span class="nav-text">树的基本概念与性质</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序——内部排序之交换排序"><span class="nav-number">1.</span> <span class="nav-text">排序——内部排序之交换排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部排序"><span class="nav-number">1.1.</span> <span class="nav-text">内部排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法练习"><span class="nav-number">1.2.</span> <span class="nav-text">算法练习</span></a></li></ol></li></ol></div>
             
 
           </div>

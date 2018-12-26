@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="@TOC 排序——归并排序与基数排序归并排序 归并排序遵循了分治模式，直观上就是分解：分解带排序的元素的序列成各具n/2个元素的两个子序列；解决：使用归并排序递归的排序两个子序列；合并：合并两个已排序的子序列以产生已排序的答案。  首先看看如何合并已排序的两个数组，为了避免在每一个基本步骤都必须检查数组是否已经到了最末端，在两个数组的最末端都放置了哨兵——将两个数组的最末端的元素设置为最大，这样就">
+<meta property="og:type" content="article">
 <meta property="og:title" content="GorMing Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/12/25/排序——内部排序之归并排序与基数排序/index.html">
 <meta property="og:site_name" content="GorMing Blog">
+<meta property="og:description" content="@TOC 排序——归并排序与基数排序归并排序 归并排序遵循了分治模式，直观上就是分解：分解带排序的元素的序列成各具n/2个元素的两个子序列；解决：使用归并排序递归的排序两个子序列；合并：合并两个已排序的子序列以产生已排序的答案。  首先看看如何合并已排序的两个数组，为了避免在每一个基本步骤都必须检查数组是否已经到了最末端，在两个数组的最末端都放置了哨兵——将两个数组的最末端的元素设置为最大，这样就">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-26T14:24:24.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GorMing Blog">
+<meta name="twitter:description" content="@TOC 排序——归并排序与基数排序归并排序 归并排序遵循了分治模式，直观上就是分解：分解带排序的元素的序列成各具n/2个元素的两个子序列；解决：使用归并排序递归的排序两个子序列；合并：合并两个已排序的子序列以产生已排序的答案。  首先看看如何合并已排序的两个数组，为了避免在每一个基本步骤都必须检查数组是否已经到了最末端，在两个数组的最末端都放置了哨兵——将两个数组的最末端的元素设置为最大，这样就">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/25/排序——内部排序之归并排序与基数排序/">
 
 
 
 
 
-  <title>归档 | GorMing Blog</title>
+  <title> | GorMing Blog</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -276,391 +280,178 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/排序——内部排序之归并排序与基数排序/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GorMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/gor.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GorMing Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline"></h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T18:32:05+08:00">
+                2018-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 11 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/25/排序——内部排序之归并排序与基数排序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/25/排序——内部排序之归并排序与基数排序/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/26/排序——内部排序之交换排序/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
+          
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-26T22:35:45+08:00" content="2018-12-26">
-          12-26
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/26/排序——内部排序值交换排序/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-26T22:35:19+08:00" content="2018-12-26">
-          12-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/25/排序——内部排序之归并排序与基数排序/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-25T18:32:05+08:00" content="2018-12-25">
-          12-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/25/排序——内部排序之选择排序/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-25T17:42:30+08:00" content="2018-12-25">
-          12-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/25/排序——内部排序之插入排序与交换排序/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-25T17:42:16+08:00" content="2018-12-25">
-          12-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        <p>@<a href="这里写自定义目录标题">TOC</a></p>
+<h1 id="排序——归并排序与基数排序"><a href="#排序——归并排序与基数排序" class="headerlink" title="排序——归并排序与基数排序"></a>排序——归并排序与基数排序</h1><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><blockquote>
+<p>归并排序遵循了分治模式，直观上就是<strong>分解：</strong>分解带排序的元素的序列成各具n/2个元素的两个子序列；<strong>解决：</strong>使用归并排序递归的排序两个子序列；<strong>合并：</strong>合并两个已排序的子序列以产生已排序的答案。</p>
+</blockquote>
+<p>首先看看如何合并已排序的两个数组，为了避免在每一个基本步骤都必须检查数组是否已经到了最末端，在两个数组的最末端都放置了哨兵——将两个数组的最末端的元素设置为最大，这样就可以避免对数组的检查：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">int* MergeSort(int* arr, int p, int q, int r) &#123;</span><br><span class="line">       //the sort interval is arr[p, q] to arr[q + 1, r]</span><br><span class="line">       int n1 = q - p + 1;</span><br><span class="line">       int n2 = r - q;</span><br><span class="line">       int* left = (int*)malloc(sizeof(1) * (n1+1));</span><br><span class="line">       int* right = (int*)malloc(sizeof(1) * (n2+1));</span><br><span class="line">       for (int i = p; i &lt;= q; i++)</span><br><span class="line">           left[i-p] = arr[i];</span><br><span class="line">       for (int i = q + 1; i &lt;= r; i++)</span><br><span class="line">           right[i - q - 1] = arr[i];</span><br><span class="line">       left[n1] = INT_MAX;</span><br><span class="line">       right[n2] = INT_MAX;</span><br><span class="line">       int i = 0;</span><br><span class="line">       int j = 0;</span><br><span class="line">       for (int k = p; k &lt;= r; k++) &#123;</span><br><span class="line">           if (left[i] &lt;= right[j]) &#123;</span><br><span class="line">               arr[k] = left[i];</span><br><span class="line">               i += 1;</span><br><span class="line">           &#125;</span><br><span class="line">           else if (left[i] &gt; right[j]) &#123;</span><br><span class="line">               arr[k] = right[j];</span><br><span class="line">               j += 1;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       free(left);</span><br><span class="line">       free(right);</span><br><span class="line">       return arr;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>下面使用循环不变式方法来证明这个算法的正确性：<br><strong>初始化：</strong>在循环的第一次迭代之前，有k=p,数组arr[p, k - 1]为空，i， j 均为0，说明left[i]和right[j]都是各自所在数组里最小的元素，且这两个元素均没有被复制到arr数组里面；<br><strong>保持：</strong>为了更好的理解循环不变式，首先假设left[i] &lt;= right[j]，这时left[i]是最小的没有被复制到数组里的最小的元素，将left[i]复制到数组里面之后数组arr[p…k]包含了k-p-1个最小的元素，然后p 和 i，均加1，为下一次迭代重新建立了循环不变式。<br><strong>终止：</strong>循环终止的条件是k=r+1。这个时候数组包含了两个数组的所有元素，且是有序的。<br>综上所述，证明了上述算法的正确性！</p>
+</blockquote>
+<p>接下来考虑递归算法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int* Merge(int* arr, int p, int r) &#123;</span><br><span class="line">       if (p &lt; r) &#123;</span><br><span class="line">           int q = (p + r) / 2;</span><br><span class="line">           Merge(arr, p, q);</span><br><span class="line">           Merge(arr, q + 1, r);</span><br><span class="line">           MergeSort(arr, p, q, r);</span><br><span class="line">       &#125;</span><br><span class="line">       return arr;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>递归算法将一个数组分成两半，分别对这两半进行排序之后，再将这两个排好序的数组组合成为一个数组。</p>
+<blockquote>
+<p>接下来分析归并算法的时间复杂度：<br>每一次都将一个节点划分成为两个，直到所有的节点都被划分成为最小的单位为止，划分的时候会产生log n + 1层，而对于每一层的划分，总的代价都是cn(遍历大数组，产生每一个小数组)，所以递归的总的代价就是cn(log n + 1) ，时间复杂度为 n(log n).</p>
+</blockquote>
+<p><strong>以下是本次在LeetCode上面所做的题目：</strong> Sort a linked list in O(n log n) time using constant space complexity.<br>根据上面的分析，程序如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     struct ListNode *next;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">struct ListNode* sortList(struct ListNode* head) &#123;</span><br><span class="line">     int* MergeSort(int* arr, int p, int q, int r) &#123;</span><br><span class="line">        //the sort interval is arr[p, q] to arr[q + 1, r]</span><br><span class="line">        int n1 = q - p + 1;</span><br><span class="line">        int n2 = r - q;</span><br><span class="line">        int* left = (int*)malloc(sizeof(1) * (n1+1));</span><br><span class="line">        int* right = (int*)malloc(sizeof(1) * (n2+1));</span><br><span class="line">        for (int i = p; i &lt;= q; i++)</span><br><span class="line">            left[i-p] = arr[i];</span><br><span class="line">        for (int i = q + 1; i &lt;= r; i++)</span><br><span class="line">            right[i - q - 1] = arr[i];</span><br><span class="line">        left[n1] = INT_MAX;</span><br><span class="line">        right[n2] = INT_MAX;</span><br><span class="line">        int i = 0;</span><br><span class="line">        int j = 0;</span><br><span class="line">        for (int k = p; k &lt;= r; k++) &#123;</span><br><span class="line">            if (left[i] &lt;= right[j]) &#123;</span><br><span class="line">                arr[k] = left[i];</span><br><span class="line">                i += 1;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (left[i] &gt; right[j]) &#123;</span><br><span class="line">                arr[k] = right[j];</span><br><span class="line">                j += 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        free(left);</span><br><span class="line">        free(right);</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int* Merge(int* arr, int p, int r) &#123;</span><br><span class="line">        if (p &lt; r) &#123;</span><br><span class="line">            int q = (p + r) / 2;</span><br><span class="line">            Merge(arr, p, q);</span><br><span class="line">            Merge(arr, q + 1, r);</span><br><span class="line">            MergeSort(arr, p, q, r);</span><br><span class="line">        &#125;</span><br><span class="line">        return arr;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int size = 0;</span><br><span class="line">    struct ListNode* temp = head;</span><br><span class="line">    while (temp != NULL) &#123;</span><br><span class="line">        size ++;</span><br><span class="line">        temp = temp -&gt; next;</span><br><span class="line">    &#125;</span><br><span class="line">    if (size &gt; 1) &#123;</span><br><span class="line">        int* arr1 = (int*)malloc(sizeof(1) * size);</span><br><span class="line">        size = 0;</span><br><span class="line">        temp = head;</span><br><span class="line">        while (temp != NULL) &#123;</span><br><span class="line">            arr1[size] = temp -&gt; val;</span><br><span class="line">            size ++;</span><br><span class="line">            temp = temp -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Merge(arr1, 0, size - 1);</span><br><span class="line">        temp = head;</span><br><span class="line">        size = 0;</span><br><span class="line">        while (temp != NULL) &#123;</span><br><span class="line">            temp -&gt; val = arr1[size];</span><br><span class="line">            size ++;</span><br><span class="line">            temp = temp -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        free(arr1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/24/字符串模式匹配/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-24T15:20:52+08:00" content="2018-12-24">
-          12-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/20/图——概念与操作/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-20T16:43:17+08:00" content="2018-12-20">
-          12-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/20/图——应用/" itemprop="url">
-              
-                <span itemprop="name">未命名</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-20T16:42:53+08:00" content="2018-12-20">
-          12-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/03/树与森林/" itemprop="url">
-              
-                <span itemprop="name">树与森林</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-03T17:33:07+08:00" content="2018-12-03">
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/03/二叉树的概念与操作/" itemprop="url">
-              
-                <span itemprop="name">二叉树的概念与操作</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-03T17:33:07+08:00" content="2018-12-03">
-          12-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/排序——内部排序之选择排序/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/26/排序——内部排序值交换排序/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -668,6 +459,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -688,8 +486,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -767,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序——归并排序与基数排序"><span class="nav-number">1.</span> <span class="nav-text">排序——归并排序与基数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">1.1.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基数排序"><span class="nav-number">1.2.</span> <span class="nav-text">基数排序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -918,6 +741,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
