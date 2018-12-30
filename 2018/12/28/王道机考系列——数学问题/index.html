@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="@TOC 数学问题% 运算符数位拆解进制转换 输入两个不超过整形定义的非负10进制整数A和B，输出A+B的m进制数。$$ A, B &amp;lt;= 2^{23} - 1$$ 输入样例：              样例输出：     8 1300 48             2504       2 1 7                 1000     0   123456789101112131">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GorMing Blog">
+<meta property="og:url" content="http://yoursite.com/2018/12/28/王道机考系列——数学问题/index.html">
+<meta property="og:site_name" content="GorMing Blog">
+<meta property="og:description" content="@TOC 数学问题% 运算符数位拆解进制转换 输入两个不超过整形定义的非负10进制整数A和B，输出A+B的m进制数。$$ A, B &amp;lt;= 2^{23} - 1$$ 输入样例：              样例输出：     8 1300 48             2504       2 1 7                 1000     0   123456789101112131">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-29T16:43:54.536Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GorMing Blog">
+<meta name="twitter:description" content="@TOC 数学问题% 运算符数位拆解进制转换 输入两个不超过整形定义的非负10进制整数A和B，输出A+B的m进制数。$$ A, B &amp;lt;= 2^{23} - 1$$ 输入样例：              样例输出：     8 1300 48             2504       2 1 7                 1000     0   123456789101112131">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/28/王道机考系列——数学问题/">
+
+
+
+
+
+  <title> | GorMing Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GorMing Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/28/王道机考系列——数学问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GorMing">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/gor.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GorMing Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T16:55:33+08:00">
+                2018-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/28/王道机考系列——数学问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/28/王道机考系列——数学问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span id="busuanzi_value_page_pv"></span>次阅读
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@<a href="王道机考系列——数学问题">TOC</a></p>
+<h1 id="数学问题"><a href="#数学问题" class="headerlink" title="数学问题"></a>数学问题</h1><h2 id="运算符"><a href="#运算符" class="headerlink" title="% 运算符"></a>% 运算符</h2><h2 id="数位拆解"><a href="#数位拆解" class="headerlink" title="数位拆解"></a>数位拆解</h2><h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><ol>
+<li><p>输入两个不超过整形定义的非负10进制整数A和B，输出A+B的m进制数。<br>$$ A, B &lt;= 2^{23} - 1$$</p>
+<pre><code>输入样例：              样例输出：
+    8 1300 48             2504  
+    2 1 7                 1000
+    0
+</code></pre></li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TenToM</span><span class="params">(<span class="keyword">long</span> data, <span class="keyword">int</span> m, <span class="keyword">int</span> arr[], <span class="keyword">int</span> &amp;len)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  十进制到m进制的转换</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> temp = data;</span><br><span class="line">    len = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (temp) &#123;</span><br><span class="line">        arr[len] = temp % m;</span><br><span class="line">        temp = temp / m;</span><br><span class="line">        len++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddM</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> arr1[], <span class="keyword">int</span> arr2[], <span class="keyword">int</span> arr[], <span class="keyword">int</span> l1, <span class="keyword">int</span> l2, <span class="keyword">int</span> &amp;l)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  m进制的两个数相加</span></span><br><span class="line">    <span class="keyword">int</span> len = l1 &lt; l2 ? l1 : l2;</span><br><span class="line">    l = l1 &lt; l2 ? l2 : l1;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> add = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        add = arr1[i] + arr2[i] + index;</span><br><span class="line">        <span class="keyword">if</span> (add &gt;= m) &#123;</span><br><span class="line">            index = <span class="number">1</span>;</span><br><span class="line">            add = add % m;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            index = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[i] = add;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (l1 &lt; l2) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len; i &lt; l2; i++) &#123;</span><br><span class="line">            add = arr2[i] + index;</span><br><span class="line">            <span class="keyword">if</span> (add &gt;= m) &#123;</span><br><span class="line">                index = <span class="number">1</span>;</span><br><span class="line">                add = add % m;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                index = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[i] = add;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (l1 &gt; l2) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = len; i &lt; l1; i++) &#123;</span><br><span class="line">            add = arr1[i] + index;</span><br><span class="line">            <span class="keyword">if</span> (add &gt;= m) &#123;</span><br><span class="line">                index = <span class="number">1</span>;</span><br><span class="line">                add = add % m;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                index = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[i] = add;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (index == <span class="number">1</span>) &#123;</span><br><span class="line">        arr[l] = <span class="number">1</span>;</span><br><span class="line">        l += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> A, B;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%lld%lld"</span>, &amp;m, &amp;A, &amp;B) == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> arrA[<span class="number">32</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> arrB[<span class="number">32</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> ans[<span class="number">33</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> lena = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> lenb = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> lenans = <span class="number">0</span>;</span><br><span class="line">        TenToM(A, m, arrA, lena);</span><br><span class="line">        TenToM(B, m, arrB, lenb);</span><br><span class="line">        AddM(m, arrA, arrB, ans, lena, lenb, lenans);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = lenans - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>, ans[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><pre><code>题目：求两个正整数的最大公约数
+输入：两个正整数；
+输出：最大公约数。
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GCD</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">    <span class="keyword">return</span> GCD(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b) != EOF) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, GCD(a, b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h2><p>最小公倍数的等于两个数的乘积除以他们的最大公约数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">GCD</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b != <span class="number">0</span> ? GCD(b, a % b) : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b) != EOF) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, a * b / GCD(a, b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="素数判定"><a href="#素数判定" class="headerlink" title="素数判定"></a>素数判定</h2><ol>
+<li>输入一个数，判断这个数是否是素数。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsPrim</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  0 1 负数都是非素数</span></span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> index = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; index; i++)</span><br><span class="line">        <span class="keyword">if</span> (n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a) != EOF) &#123;</span><br><span class="line">        <span class="keyword">if</span> (IsPrim(a))</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"yes\n"</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"no\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="求解素数"><a href="#求解素数" class="headerlink" title="求解素数"></a>求解素数</h3><pre><code>给定一个数，给出这个数范围内的所有素数，并输出，最后一个数后面没有空格。
+思路：从2开始，当遍历到一个数的时候将所有这个数的倍数标记为非素数，所以当我们遍历到某个数的时候如果它没有被比它小的数标记为非素数的话它就是素数。
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> prime[<span class="number">10000</span>];   <span class="comment">//  保存找出的素数</span></span><br><span class="line"><span class="keyword">int</span> primenum = <span class="number">0</span>;   <span class="comment">//  保存找出的素数的个数</span></span><br><span class="line"><span class="keyword">bool</span> mark[<span class="number">10000</span>] = &#123;<span class="literal">false</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  找出所有小于10001的素数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">10000</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mark[i] == <span class="literal">false</span>) &#123;</span><br><span class="line">            prime[primenum++] = i;</span><br><span class="line">            <span class="comment">//  从i*i开始标记是因为比i*i小的数据都在之前就有标记过了。</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i * i; j &lt;= <span class="number">10000</span>; j += i)</span><br><span class="line">                mark[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a) != EOF) &#123;</span><br><span class="line">        <span class="keyword">bool</span> isoutput = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; primenum; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prime[i] &lt;= a) &#123;</span><br><span class="line">                <span class="keyword">if</span> (isoutput == <span class="literal">false</span>) &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">"%d"</span>, prime[i]);</span><br><span class="line">                    isoutput = <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="built_in">printf</span>(<span class="string">" %d"</span>, prime[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="分解素因数"><a href="#分解素因数" class="headerlink" title="分解素因数"></a>分解素因数</h2><h3 id="求解质因数"><a href="#求解质因数" class="headerlink" title="求解质因数"></a>求解质因数</h3><pre><code>给定一个数，求这个这个数的质因数的个数。
+
+输入：
+    120（120 = 2 * 2 * 2 * 3 * 5）;
+
+输出：
+    5
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> prime[<span class="number">100000</span>];</span><br><span class="line"><span class="keyword">long</span> primenum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> mark[<span class="number">100000</span>] = &#123;<span class="literal">false</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">2</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mark[i] == <span class="literal">false</span>) &#123;</span><br><span class="line">            prime[primenum++] = i;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= <span class="number">1000</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">long</span> j = i * i; j &lt; <span class="number">100000</span>; j += i)</span><br><span class="line">                mark[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a) != EOF) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = a;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; primenum; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n % prime[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                num++;</span><br><span class="line">                n = n / prime[i];</span><br><span class="line">                <span class="keyword">while</span>(n % prime[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                    num++;</span><br><span class="line">                    n = n / prime[i];</span><br><span class="line">                &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> (n != <span class="number">1</span>) &#123;</span><br><span class="line">           num++;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="整除问题"><a href="#整除问题" class="headerlink" title="整除问题"></a>整除问题</h3><p>   给定n, a求最大的k，使得n！可以被a^k整除但不能被a^(k+1)整除。</p>
+<pre><code>输入：两个整数n, a.（2 &lt;= n &lt;= 1000, 2 &lt;= a &lt;= 1000）.
+
+输出：一个整数。
+
+样例输入：6 10
+
+样例输出：1
+
+**分析：** 由于n!和 a^k数字会变得很大，甚至long long数据类型都无法保存，所以不能暴力计算出值之后再求k，其中一个可以采用的方法就是质因数分解，将n!和a^k都进行质因数分解，再对分解的结果进行计算就好，n!和a^k的质因数分解结果如下所示：
+$$ b = p1^{e1} p2^{e2} p3^{e3}....pn^{en} $$
+$$ a = p1&apos;^{e1&apos;} p2&apos;^{e2&apos;} p3&apos;^{e3&apos;}....pn&apos;^{en&apos;} $$ 
+$$ a^{k} = p1&apos;^{ke1&apos;} p2&apos;^{ke2&apos;} p3&apos;^{ke3&apos;}....pn&apos;^{ken&apos;} $$
+要想a能被b整除，那么a中存在的质因数p在b中也必然存在，并且a中的幂指数必定不大于b中的p的幂指数。
+
+现在令x = n!, y = a^k，则
+$$ x = p1^{e1} p2^{e2} p3^{e3}....pn^{en} $$
+$$ y = p1&apos;^{ke1&apos;} p2&apos;^{ke2&apos;} p3&apos;^{ke3&apos;}....pn&apos;^{ken&apos;} $$
+现在要确定k使得y中的任一素因数的幂指数的k倍依旧小于或等于x中的幂指数，要求得k只需要一次测试a中的每一个素因数就可以了。
+
+所以，现在问题转化为求n!和a^k的素因数的问题了，a^k的素因数比较容易，求出a的素因数就很容易了，关键是n!的素因数，n！是从1到n的数字的乘积，这些乘积中，每一个素因数p的倍数都将为n！至少贡献一个素因子，则p至少提供n/p个素因子，每一个p * p都将为n!至少贡献两个素因子，则至少为n!贡献n / (p * p)个素因子，p*p*p同理。
+
+下面以10!为例来简单展示以上讨论：
+</code></pre><p>   $$ 10! = 10 <em> 9 </em> 8 <em> 7 </em> 6 <em> 5 </em> 4 <em> 3 </em> 2 $$<br>   10以内的素因数有：2 3 5 7这四个。</p>
+<p>   2 为 10! 提供 10 / 2 = 5 个素因数， 2 <em> 2 为10!提供 10 / (2 </em> 2) = 2，个素因数，所以2提供5 + 2个素因数。这7个素因数分别来自 2、4、6、8、10，其中2里1个，4里2个，6里1个，8里3个，10里1个。</p>
+<p>   同理可对3、5、7进行计算。</p>
+<p>   这样就将原本计算n!的素因数的数学计算转化为了计算1 ~ n的素因数的问题了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NUM 1001</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> prime[NUM] = &#123;<span class="number">0</span>&#125;;     <span class="comment">//  存储2-NUM的素因数。</span></span><br><span class="line"><span class="keyword">int</span> primenum = <span class="number">0</span>;         <span class="comment">//  记录NUM以内的所有素数的个数</span></span><br><span class="line"><span class="keyword">int</span> primen[NUM] = &#123;<span class="number">0</span>&#125;;    <span class="comment">//  存储n的所有素因数</span></span><br><span class="line"><span class="keyword">int</span> primea[NUM] = &#123;<span class="number">0</span>&#125;;    <span class="comment">//  存储a的所有素因数</span></span><br><span class="line"><span class="keyword">int</span> numn[NUM] = &#123;<span class="number">0</span>&#125;;      <span class="comment">//  存储n!的每一个素因数的个数</span></span><br><span class="line"><span class="keyword">int</span> numa[NUM] = &#123;<span class="number">0</span>&#125;;      <span class="comment">//  存储a的每一个素因数的个数</span></span><br><span class="line"><span class="keyword">bool</span> mark[NUM] = &#123;<span class="literal">false</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">// 将NUM以内的所有素因数存储起来。</span></span><br><span class="line">    <span class="keyword">int</span> index = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(NUM) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mark[i] == <span class="literal">false</span>) &#123;</span><br><span class="line">            prime[primenum++] = i;     <span class="comment">//  记录下素数</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; index) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i * i; j &lt; NUM; j += i)   <span class="comment">//将所有i的倍数标记为非素数</span></span><br><span class="line">                mark[j] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Primen</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> &amp;len)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  计算n!的素数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">        primen[i] = <span class="number">0</span>;</span><br><span class="line">        numn[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> temp = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; primenum; i++) &#123;</span><br><span class="line">        p = prime[i];</span><br><span class="line">        temp = n;</span><br><span class="line">        <span class="keyword">if</span> (temp / p &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(temp) &#123;</span><br><span class="line">                primen[index] = p;  <span class="comment">//  记录下素数</span></span><br><span class="line">                numn[index] += temp / p;</span><br><span class="line">                temp = temp / p;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    len = index;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Primea</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> &amp;len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">        <span class="comment">//  先将计数器清零</span></span><br><span class="line">        numa[i] = <span class="number">0</span>;</span><br><span class="line">        primea[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> temp = a;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; NUM; i++) &#123;</span><br><span class="line">        p = prime[i];</span><br><span class="line">        <span class="keyword">if</span> (temp % p == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span>(temp % p == <span class="number">0</span>) &#123;</span><br><span class="line">                primea[index] = p;</span><br><span class="line">                numa[index]++;</span><br><span class="line">                temp = temp / p;</span><br><span class="line">            &#125;</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (temp == <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    len = index;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Findk</span><span class="params">(<span class="keyword">int</span> ln, <span class="keyword">int</span> la)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>, index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; ;k++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; la; i++) &#123;</span><br><span class="line">                <span class="comment">//  确保a的质因数都在n!的质因数中，如果不在，则返回0</span></span><br><span class="line">            temp = numa[i] * k;</span><br><span class="line">            <span class="keyword">for</span> (index = <span class="number">0</span>; index &lt; ln, primea[i] != primen[index]; index++);</span><br><span class="line">            <span class="keyword">if</span> (index &gt;= ln) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (numn[index] &lt; temp) <span class="keyword">return</span> k - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    init();  <span class="comment">// 先初始化，找出1001以内的所有素数</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;a) != EOF) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lenn = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> lena = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        Primen(n, lenn);  <span class="comment">//  计算n!的素因数分解</span></span><br><span class="line">        Primea(a, lena);  <span class="comment">//  计算a的素因数分解</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, Findk(lenn, lena));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二分求幂"><a href="#二分求幂" class="headerlink" title="二分求幂"></a>二分求幂</h2><pre><code>题目描述：求A^B的最后三位数表示的整数(A^B表示A的B次方)。
+A 与 B均为0，即结束。
+样例输入：              样例输出：
+2 3                     8
+12 6                    984
+6789 10000              1
+0 0 
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a, b;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;a, &amp;b) != EOF) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a == <span class="number">0</span> &amp;&amp; b == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(b) &#123;</span><br><span class="line">            <span class="keyword">if</span> (b % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                ans *= a;</span><br><span class="line">                ans = ans % <span class="number">1000</span>;</span><br><span class="line">                <span class="comment">//  因为题目只要求保留后三位数字</span></span><br><span class="line">            &#125;</span><br><span class="line">            b = b / <span class="number">2</span>;</span><br><span class="line">            a *= a;</span><br><span class="line">            a = a % <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面介绍的二分求幂的方法其实就是把幂指数进行二分分解使用二进制来表示幂指数，例如：<br>$$12^{6} = 12^{2^{2}}<em>12^{2^{1}}, 6的二进制表示是1010 只需要在两个1的位置完成计算即可$$<br>    以12^6为例，解释循环中的操作：<br>    循环次数    ans的值             b的值   a的值<br>      0         1                   6       12<br>      1         1                   3       12^2<br>      2         1</em>12^2              1       12^2 <em> 12^2<br>      3         1</em>12^2<em>12^2</em>12^2    0       (12^2*12^2)^2<br>    如果以正常的循环来求的话要求6次，6个循环才能求出12^6的值，但是使用二分求幂，只需要4次循环，当幂指数变得很大的时候这种做法可以节约一半的时间。</p>
+<h2 id="高精度整数"><a href="#高精度整数" class="headerlink" title="高精度整数"></a>高精度整数</h2><p>高精度整数数值非常巨大，无法使用计算机的内置数据类型来保存它的值，所以只能使用结构体来存储，高精度整数的内置类型如下所示：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BigInteger</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> digit[<span class="number">1000</span>];    </span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">    <span class="comment">//  每四位使用一个存储单元，例如整数123456789，存出结果为</span></span><br><span class="line">    <span class="comment">//  digit[0] = 6789, digit[1] = 2345, digit[2] = 1;</span></span><br><span class="line">    <span class="comment">//  size = 3；</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h3><pre><code>题目： 实现一个加法器，使其能够输出a+b的值
+输入：两个数a和b，每个数不超过1000位
+输出：可能有多组测试数据，对每组数据输出a+b的值
+样例输入：
+2 6
+10000000000000000000 1000000000000000000000000000000000
+样例输出：
+8
+1000000000000010000000000000000000
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BigInteger</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> digit[<span class="number">1000</span>];</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">            digit[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Set</span><span class="params">(<span class="keyword">char</span> str[])</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  将输入的字符串转化为整数存储在digit中</span></span><br><span class="line">        Init();</span><br><span class="line">        <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;        <span class="comment">//  计数，每四位数记录一次</span></span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;          <span class="comment">//  记录转换过程中的数字</span></span><br><span class="line">        <span class="keyword">int</span> tenq = <span class="number">1</span>;         <span class="comment">//  权重</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            num += (str[i] - <span class="string">'0'</span>) * tenq;</span><br><span class="line">            tenq *= <span class="number">10</span>;</span><br><span class="line">            index++;</span><br><span class="line">            <span class="keyword">if</span> (index == <span class="number">4</span> || i == <span class="number">0</span>) &#123;</span><br><span class="line">                digit[size++] = num;</span><br><span class="line">                num = <span class="number">0</span>;</span><br><span class="line">                tenq = <span class="number">1</span>;</span><br><span class="line">                index = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Ouput</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  将运算后的结果用字符串输出出来。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != size - <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%04d "</span>, digit[i]);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d "</span>, digit[i]);</span><br><span class="line">            <span class="comment">//  如果不是最高位，那么不足4位时，用0补足，例如110001在digit中的存储为</span></span><br><span class="line">            <span class="comment">//  digit[0] = 1, digit[1] = 11, 由于0001在实际存储时会变为1，</span></span><br><span class="line">            <span class="comment">//  所以需要补足0；</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BigInteger <span class="keyword">operator</span> + (<span class="keyword">const</span> BigInteger &amp;A) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="comment">//  加法运算符；</span></span><br><span class="line">        BigInteger ret;</span><br><span class="line">        ret.Init();</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> add = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size || i &lt; A.size; i++) &#123;</span><br><span class="line">            <span class="comment">//  完成相同长度下的加法运算</span></span><br><span class="line">            add = digit[i] + A.digit[i] + carry;</span><br><span class="line">            carry = add / <span class="number">10000</span>;</span><br><span class="line">            ret.digit[i] = add % <span class="number">10000</span>;</span><br><span class="line">            ret.size++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry) &#123;</span><br><span class="line">            <span class="comment">//  有进位则进1</span></span><br><span class="line">            ret.digit[size] = carry;</span><br><span class="line">            ret.size++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> A[<span class="number">1000</span>], B[<span class="number">1000</span>];</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s %s"</span>, A, B) != EOF) &#123;</span><br><span class="line">        BigInteger BigA, BigB, BigC;</span><br><span class="line">        BigA.Set(A);</span><br><span class="line">        BigB.Set(B);</span><br><span class="line">        BigC = BigA + BigB;</span><br><span class="line">        BigC.Ouput();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="N的阶乘"><a href="#N的阶乘" class="headerlink" title="N的阶乘"></a>N的阶乘</h3><pre><code>题目描述：输入一个数N，输出N的阶乘。
+输入：正整数N（0 &lt;= N &lt;= 1000）
+输出：有可能有多组输入，对于每一组输入，输出N!
+样例输入：
+4
+5
+15
+样例输出：
+24
+120
+1307674368000
+</code></pre><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BigInteger</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> digit[<span class="number">1000</span>];</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">            digit[i] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Set</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  将输入的字符串转化为整数存储在digit中</span></span><br><span class="line">        Init();</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            digit[size++] = x % <span class="number">10000</span>;</span><br><span class="line">            x = x / <span class="number">10000</span>;</span><br><span class="line">        &#125; <span class="keyword">while</span>(x);</span><br><span class="line">        <span class="comment">//  使用 do-while循环是要确保x等于0时也能被处理</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Ouput</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  将运算后的结果用字符串输出出来。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != size - <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%04d"</span>, digit[i]);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d"</span>, digit[i]);</span><br><span class="line">            <span class="comment">//  如果不是最高位，那么不足4位时，用0补足，例如110001在digit中的存储为</span></span><br><span class="line">            <span class="comment">//  digit[0] = 1, digit[1] = 11, 由于0001在实际存储时会变为1，</span></span><br><span class="line">            <span class="comment">//  所以需要补足0；</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    BigInteger <span class="keyword">operator</span> * (<span class="keyword">const</span> <span class="keyword">int</span> x) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="comment">//  乘法运算符；</span></span><br><span class="line">        BigInteger ret;</span><br><span class="line">        ret.Init();</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> pro = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            pro = digit[i] * x + carry;</span><br><span class="line">            ret.digit[i] = pro % <span class="number">10000</span>;</span><br><span class="line">            carry = pro / <span class="number">10000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ret.size = size;</span><br><span class="line">        <span class="comment">//  进位这里需要注意，曾经因为将进位设置为1而出错，进位不一定为1</span></span><br><span class="line">        <span class="keyword">if</span>(carry) ret.digit[ret.size++] = carry;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n) != EOF) &#123;</span><br><span class="line">        BigInteger A;</span><br><span class="line">        A.Init();</span><br><span class="line">        A.Set(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++)</span><br><span class="line">            A = A * i;</span><br><span class="line">        A.Ouput();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="进制转换-1"><a href="#进制转换-1" class="headerlink" title="进制转换"></a>进制转换</h3><pre><code>题目描述：将M进制数转换为N进制数。
+输入：输入的第一行包括两个整数：M和N (2 &lt;= M, N &lt;= 30);
+     输入的下一行是一个数X，数是M进制数，将其转化为N进制数，注意X的输入是一个字符串；
+输出：
+    输出X的N进制数。
+样例输入：
+    16 10
+    F
+样例输出：
+    15
+提示：输入时字母部分为大写，输出时转化为小写，可能有大数据。
+</code></pre><p><strong>思路：</strong> 将M进制数转化为10进制数，再将10进制数转化为N进制数。</p>
+<p><code>`</code>C++</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;string.h&gt;</p>
+<p>#define MAXSIZE 100</p>
+<p>struct BigInteger {<br>    int digit[1000];<br>    int size;<br>    void Init() {<br>        size = 0;<br>        for (int i = 0; i &lt; size; i++)<br>            digit[i] = 0;<br>    }</p>
+<pre><code>void Set(int x) {
+    //  将输入的字符串转化为整数存储在digit中
+    Init();
+    do {
+        digit[size++] = x % 10000;
+        x = x / 10000;
+    } while(x);
+    //  使用 do-while循环是要确保x等于0时也能被处理
+}
+
+void Ouput() {
+    //  将运算后的结果用字符串输出出来。
+    for (int i = size - 1; i &gt;= 0; i--) {
+        if (i != size - 1) printf(&quot;%04d&quot;, digit[i]);
+        else printf(&quot;%d&quot;, digit[i]);
+        //  如果不是最高位，那么不足4位时，用0补足，例如110001在digit中的存储为
+        //  digit[0] = 1, digit[1] = 11, 由于0001在实际存储时会变为1，
+        //  所以需要补足0；
+
+    }
+}
+
+BigInteger operator + (const BigInteger &amp;A) const {
+    //  加法运算符；
+    BigInteger ret;
+    ret.Init();
+    int carry = 0;
+    int add = 0;
+    for (int i = 0; i &lt; size || i &lt; A.size; i++) {
+        //  完成相同长度下的加法运算
+        add = digit[i] + A.digit[i] + carry;
+        carry = add / 10000;
+        ret.digit[i] = add % 10000;
+        ret.size++;
+    }
+    if (carry) {
+        //  有进位则进1
+        ret.digit[size] = carry;
+        ret.size++;
+    }
+    return ret;
+}
+
+BigInteger operator * (const int x) const {
+    //  加法运算符；
+    BigInteger ret;
+    ret.Init();
+    int carry = 0;
+    int pro = 0;
+    for (int i = 0; i &lt; size; i++) {
+        pro = digit[i] * x + carry;
+        ret.digit[i] = pro % 10000;
+        carry = pro / 10000;
+    }
+    ret.size = size;
+    if(carry) ret.digit[ret.size++] = carry;
+    return ret;
+}
+
+BigInteger operator / (const int x) const {
+    BigInteger ret;
+    ret.Init();
+    int divide = 0;     //  保存除数
+    int reminder = 0;   //  保存余数
+    for (int i = size - 1; i &gt;= 0; i--) {
+        divide = (reminder * 10000 + digit[i]) / x;
+        reminder = (reminder * 10000 + digit[i]) % x;
+        ret.digit[i] = divide;
+    }
+
+    for (int i = 0; i &lt; MAXSIZE; i++)
+        if(ret.digit[i] != 0) ret.size = i;
+    ret.size++;
+    return ret;
+}
+
+int operator % (int x) const {
+    int reminder = 0;
+    int divide = 0;
+    for (int i = size - 1; i &gt;= 0; i--) {
+        divide = (reminder * 10000 + digit[i]) / x;
+        reminder = (reminder * 10000 + digit[i]) % x;
+    }
+    return reminder;
+}
+</code></pre><p>};</p>
+<p>int main() {<br>    int m, n;<br>    char str[1000];    //  输入的需要转化的数字<br>    char ans[1000];    //  转化后的n进制数</p>
+<pre><code>while(scanf(&quot;%d %d&quot;, &amp;m, &amp;n) != EOF) {
+    BigInteger BigA;   //  存储m转化为10进制后的数字
+    BigInteger BigB;   //  存储计算过程中的权重信息
+    BigA.Set(0);
+    BigB.Set(1);
+
+    scanf(&quot;%s&quot;, str);
+    int len = strlen(str);
+    int digit;
+    for(int i = len - 1; i &gt;= 0; i--) {
+        if(str[i] &gt;= &apos;0&apos; &amp;&amp; str[i] &lt;= &apos;9&apos;) {
+            digit = str[i] - &apos;0&apos;;
+        } else {
+            digit = str[i] - &apos;A&apos; + 10;
+        }
+        BigA = BigA + BigB * digit;
+        BigB = BigB * m;
+    }
+
+    int index = 0;
+    int divide = 0;
+    int reminder = 0;
+    do {
+        reminder = BigA % n;
+        BigA = BigA / 10;
+        if (reminder &gt;= 10) ans[index++] = reminder - 10 + &apos;a&apos;;
+        else ans[index++] = reminder + &apos;0&apos;;
+
+    } while(BigA.digit[0] != 0 || BigA.size != 1);
+
+    for (int i = index - 1; i &gt;= 0; i--)
+        printf(&quot;%c&quot;, ans[i]);
+    printf(&quot;\n&quot;);
+}
+return 0;
+</code></pre><p>}<br><code></code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/28/王道机考系列——数据结构/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/30/王道机考系列——图论/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/gor.jpg" alt="GorMing">
+            
+              <p class="site-author-name" itemprop="name">GorMing</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/GorMingyf" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:GorMing@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数学问题"><span class="nav-number">1.</span> <span class="nav-text">数学问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">1.1.</span> <span class="nav-text">% 运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数位拆解"><span class="nav-number">1.2.</span> <span class="nav-text">数位拆解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进制转换"><span class="nav-number">1.3.</span> <span class="nav-text">进制转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大公约数"><span class="nav-number">1.4.</span> <span class="nav-text">最大公约数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小公倍数"><span class="nav-number">1.5.</span> <span class="nav-text">最小公倍数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#素数判定"><span class="nav-number">1.6.</span> <span class="nav-text">素数判定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#求解素数"><span class="nav-number">1.6.1.</span> <span class="nav-text">求解素数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分解素因数"><span class="nav-number">1.7.</span> <span class="nav-text">分解素因数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#求解质因数"><span class="nav-number">1.7.1.</span> <span class="nav-text">求解质因数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整除问题"><span class="nav-number">1.7.2.</span> <span class="nav-text">整除问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分求幂"><span class="nav-number">1.8.</span> <span class="nav-text">二分求幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高精度整数"><span class="nav-number">1.9.</span> <span class="nav-text">高精度整数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#高精度加法"><span class="nav-number">1.9.1.</span> <span class="nav-text">高精度加法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N的阶乘"><span class="nav-number">1.9.2.</span> <span class="nav-text">N的阶乘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进制转换-1"><span class="nav-number">1.9.3.</span> <span class="nav-text">进制转换</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GorMing</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+<div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style="display:none">
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'dKgIBj5WRXYC3ieCXKno7O4X-gzGzoHsz',
+        appKey: 'KBIh5RD73pOu1lfJRIzjSGC7',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
